@@ -1,0 +1,46 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.6.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        //LocalDate를 사용하기 위한 SpringDataJpa 코어 모듈추가
+        classpath("io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.hun'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    //handlebars 를 추가, 스프링 2.0에서는 0.3.0버전을 사용
+    compile 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0'
+    compile 'com.github.jknack:handlebars-helpers:4.0.7',
+            'com.github.jknack:handlebars-jackson2:4.0.7',
+            'com.github.jknack:handlebars-humanize:4.0.7',
+            'com.github.jknack:handlebars-markdown:4.0.7'
+}
+//LocalDate를 사용하기 위한 SpringDataJpa 코어 모듈추가
+//SpringDataJpa가 사용하는 Hibernate 버전만 5.2.11로 변경해 사용
+ext['hibernate.version'] = '5.2.11.Final'
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    runtimeOnly('com.h2database:h2')
+    compileOnly('org.projectlombok:lombok')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
