@@ -9,11 +9,7 @@ import lombok.NoArgsConstructor;
 
 //import org spring.어쩌고 id 엿는데 javax.persistence로 바꾸니까 됏음
 //https://stackoverflow.com/questions/4381290/hibernate-exception-org-hibernate-annotationexception-no-identifier-specified
-import javax.persistence.Id;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.*;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -21,7 +17,7 @@ import javax.persistence.GeneratedValue;
 public class Posts extends BaseTimeEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 500, nullable = false)
