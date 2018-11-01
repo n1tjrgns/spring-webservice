@@ -4,6 +4,7 @@ import com.hun.webservice.domain.posts.PostsRepository;
 import com.hun.webservice.dto.posts.PostsSaveRequestDto;
 import com.hun.webservice.service.PostsService;
 import lombok.AllArgsConstructor;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,9 +25,9 @@ public class WebRestController {
         return "HelloWorld";
     }
 
-    @PostMapping("/posts")
     //리턴타입 void -> Long
-    public Long savePosts(@RequestBody PostsSaveRequestDto dto){
+    @PostMapping("/posts")
+    public Long savePosts(@RequestBody PostsSaveRequestDto dto)throws InvalidDataAccessApiUsageException {
 
        // postsRepository.save(dto.toEntity());
        //이 부분도 교체
