@@ -45,6 +45,7 @@ public class PostsRepositoryTest {
                 .build());
 
         //when
+        //findall : list의 모든 entity를 가져옴
         List<Posts> postsList = postsRepository.findAll();
 
         //then

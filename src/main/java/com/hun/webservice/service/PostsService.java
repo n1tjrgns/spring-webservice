@@ -18,9 +18,13 @@ import java.util.stream.Collectors;
 @EnableTransactionManagement
 @AllArgsConstructor
 @Service
+/*Controller와 Service 역할을 분리하기 위해서
+* Service를 만들어 Dto를 전달받음*/
 public class PostsService{
     private PostsRepository postsRepository;
 
+    /*DB를 CRUD하는 메소드는 @Transactional를 필수적으로 동반함
+    * 예외가 발생하면 롤백시킴*/
     @Transactional
     public Long save(PostsSaveRequestDto dto){
 

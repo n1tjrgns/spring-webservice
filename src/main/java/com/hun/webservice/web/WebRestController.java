@@ -15,8 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class WebRestController {
 
-    //private PostsRepository postsRepository;
-    //WebRestController의 save 메소드를 service의 save로 교체
+    /*public WebRestController(PostsRepository postsRepository){
+    *   this.postsRepository = postsRepository;
+    *   }
+    *  @AllArgsConstructor
+    *  //bean주입 방식 중,
+    생성자 주입 방식으로 모든 필드를 인자값으로 하는 생성자를 생성해줌
+    이 때 클래스의 의존 관계가 변경될때마다 생성자 코드를 계속해서 수정하는 번거로움을 해결하기 위해
+    lombok 어노테이션 사용*/
     private PostsService postsService;
 
     @GetMapping("/hello")
